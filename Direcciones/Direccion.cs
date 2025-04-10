@@ -2,7 +2,7 @@
 
 	public abstract class Direccion {
 
-		// VERSION 1 => 10/4/2025
+		// EN PROCESO, USAR VERSION 1
 		protected readonly string carpeta;
 		protected readonly string archivo;
 
