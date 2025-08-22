@@ -5,25 +5,28 @@ namespace Ging1991.Persistencia.Lectores.Demandas {
 
 	public abstract class LectorPorDemanda<T> {
 
-		private readonly Dictionary<string, T> mapaDatos;
+		private readonly Dictionary<string, T> datos;
 		private readonly Direccion direccionCarpeta;
-		private readonly ILector<T> lectorInterno;
+		protected ILector<T> lectorInterno;
 
-		public LectorPorDemanda(Direccion direccionCarpeta, ILector<T> lectorInterno) {
+		public LectorPorDemanda(Direccion direccionCarpeta) {
 			this.direccionCarpeta = direccionCarpeta;
-			this.lectorInterno = lectorInterno;
-			mapaDatos = new Dictionary<string, T>();
+			datos = new Dictionary<string, T>();
 		}
 
 		public T Leer(string nombre) {
 
-			if (!mapaDatos.ContainsKey(nombre)) {
-				mapaDatos.Add(
+			if (!datos.ContainsKey(nombre)) {
+				datos.Add(
 					nombre, lectorInterno.Leer(direccionCarpeta.Generar(nombre))
 				);
 			}
 
-			return mapaDatos[nombre];
+			return datos[nombre];
+		}
+
+		public void DescartarCache() {
+			datos.Clear();
 		}
 
 	}

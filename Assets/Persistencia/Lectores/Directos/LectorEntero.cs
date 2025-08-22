@@ -2,7 +2,7 @@
 		
 	public class LectorEntero : LectorGenerico<LectorEntero.DatoBD> {
 
-		public LectorEntero(string direccion, Tipo tipo) : base(direccion, tipo) {}
+		public LectorEntero(string direccion, TipoLector tipo) : base(direccion, tipo) {}
 
 		public void Guardar(int valor) {
 			Guardar(new DatoBD

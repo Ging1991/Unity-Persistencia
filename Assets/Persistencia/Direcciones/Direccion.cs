@@ -6,7 +6,7 @@
 		protected readonly string archivo;
 
 		public Direccion(string carpeta, string archivo) {
-			this.carpeta = carpeta;
+			this.carpeta = Carpeta.Normalizar(carpeta);
 			this.archivo = archivo;
 		}
 

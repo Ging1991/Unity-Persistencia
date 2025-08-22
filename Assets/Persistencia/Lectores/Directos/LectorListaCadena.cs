@@ -4,7 +4,7 @@ namespace Ging1991.Persistencia.Lectores.Directos {
 		
 	public class LectorListaCadenas : LectorGenerico<LectorListaCadenas.DatoBD> {
 
-		public LectorListaCadenas(string direccion, Tipo tipo) : base(direccion, tipo) {}
+		public LectorListaCadenas(string direccion, TipoLector tipo) : base(direccion, tipo) {}
 
 		public void Guardar(List<string> valor) {
 			Guardar(new DatoBD

@@ -4,16 +4,19 @@ namespace Ging1991.Persistencia.Lectores {
 		
 	public abstract class LectorGenerico<T> : LectorJSON {
 
+		protected TipoLector tipo;
 		private T dato;
 
-		public LectorGenerico(string direccion, Tipo tipo) : base(direccion, tipo) {}
+		public LectorGenerico(string direccion, TipoLector tipo) : base(direccion) {
+			this.tipo = tipo;
+		}
 
 		public T Leer() {
 			if (dato == null) {
-				if (tipo == Tipo.DINAMICO)
-					dato = ConvertidorJSON<T>.Convertir(LeerDesdeStream());
-				if (tipo == Tipo.RECURSOS)
-					dato = ConvertidorJSON<T>.Convertir(LeerDesdeRecursos(direccion));
+				if (tipo == TipoLector.DINAMICO)
+					dato = JsonUtility.FromJson<T>(LeerDesdeStream());
+				if (tipo == TipoLector.RECURSOS)
+					dato = JsonUtility.FromJson<T>(LeerDesdeRecursos(direccion));
 			}
 			return dato;
 		}
@@ -23,8 +26,8 @@ namespace Ging1991.Persistencia.Lectores {
 		}
 
 		public void Guardar(T dato) {
-			if (tipo == Tipo.DINAMICO)
-				GuardarHaciaStream(ConvertidorJSON<T>.Convertir(dato));
+			if (tipo == TipoLector.DINAMICO)
+				GuardarHaciaStream(JsonUtility.ToJson(dato));
 			else
 				Debug.LogWarning("Un lector de recursos no puede guardar. Use un lector de Stream.");
 		}
@@ -35,7 +38,7 @@ namespace Ging1991.Persistencia.Lectores {
 
 		public void InicializarPorDefecto(T defecto) {
 			if (!ExistenDatos()) {
-				GuardarHaciaStream(ConvertidorJSON<T>.Convertir(defecto));
+				GuardarHaciaStream(JsonUtility.ToJson(defecto));
 			}
 		}
 

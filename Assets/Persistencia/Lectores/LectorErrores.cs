@@ -15,30 +15,34 @@ namespace Ging1991.Persistencia.Lectores {
 			return instancia;
 		}
 
+
 		private LectorErrores() {
 			lectorInterno = new LectorInterno(new DireccionDinamica("AUDITORIA", "ERRORES.json").Generar());
 			lectorInterno.InicializarPorDefecto(new DatoListaBD());
 		}
 
-		public void Guardar(string mensaje) {
-            DatoBD datoNuevo = new()
-            {
-                mensaje = mensaje,
-                fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-            };
 
-            DatoListaBD datoLista = lectorInterno.Leer();
+		public void Guardar(string mensaje) {
+			DatoBD datoNuevo = new()
+			{
+				mensaje = mensaje,
+				fecha = DateTime.Now
+			};
+
+			DatoListaBD datoLista = lectorInterno.Leer();
 			datoLista.lista.Add(datoNuevo);
 			lectorInterno.Guardar(datoLista);
 		}
+
 
 		public List<DatoBD> Leer() {
 			return lectorInterno.Leer().lista;
 		}
 
+
 		private class LectorInterno : LectorGenerico<DatoListaBD> {
 
-			public LectorInterno(string direccion) : base(direccion, Tipo.DINAMICO) {}
+			public LectorInterno(string direccion) : base(direccion, TipoLector.DINAMICO) { }
 
 		}
 		
@@ -52,7 +56,7 @@ namespace Ging1991.Persistencia.Lectores {
 		[Serializable]
 		public class DatoBD {
 
-			public string fecha;
+			public DateTime fecha;
 			public string mensaje;
 
 		}
