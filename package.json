@@ -1,0 +1,13 @@
+{
+	"name": "com.ging1991.persistencia",
+	"version": "1.0.0",
+	"displayName": "Ging1991 - Persistencia",
+	"description": "Librería para guardar y leer datos estilo JSON.",
+	"unity": "2022.3",
+	"keywords": ["soporte",	"unity", "tcg",	"util"],
+	"author": {
+		"name": "Carlos Caballero",
+		"email": "tu-email@ejemplo.com",
+		"url": "https://github.com/Ging1991/Unity-Persistencia.git"
+	}
+}
