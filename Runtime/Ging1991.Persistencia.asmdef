@@ -1,7 +1,7 @@
 {
 	"name": "Ging1991.Persistencia",
 	"rootNamespace": "Ging1991.Persistencia",
-	"references": [],
+	"references": ["Ging1991.Core"],
 	"includePlatforms": [],
 	"excludePlatforms": [],
 	"allowUnsafeCode": false,

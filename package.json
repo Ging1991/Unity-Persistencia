@@ -1,6 +1,6 @@
 {
 	"name": "com.ging1991.persistencia",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"displayName": "Ging1991 - Persistencia",
 	"description": "Librería para guardar y leer datos formato JSON.",
 	"unity": "2022.3",
