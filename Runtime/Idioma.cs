@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Ging1991.Persistencia {
 
-	public class Idioma : ITraductor {
+	public class Idioma : IProveedor<string, string> {
 
 		private readonly Dictionary<string, string> datos;
 
