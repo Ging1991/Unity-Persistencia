@@ -10,7 +10,7 @@ namespace Ging1991.Persistencia.Datos {
 		public byte g;
 		public byte b;
 		public byte a;
-		private static readonly int DIVISOR = 255;
+		private static readonly float DIVISOR = 255f;
 
 		public Color GetColor() {
 			return new Color(r / DIVISOR, g / DIVISOR, b / DIVISOR, a / DIVISOR);
