@@ -10,6 +10,8 @@ namespace Ging1991.Persistencia {
 
 		public Banderas(string direccion) {
 			lector = new(direccion, Lectores.TipoLector.DINAMICO);
+			if (!lector.ExistenDatos())
+				lector.Guardar(new List<string>());
 			lista = lector.Leer().valor;
 		}
 
